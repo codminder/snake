@@ -50,9 +50,11 @@ function setPosition(element, position) {
 
 
 function drawFood(){
-	const foodElement = createGameElement('div', 'food');
-	setPosition(foodElement, food);
-	board.appendChild(foodElement);
+	if (gameStarted) {
+		const foodElement = createGameElement('div', 'food');
+		setPosition(foodElement, food);
+		board.appendChild(foodElement);
+	}
 }
 
 //Generate Food
@@ -161,7 +163,7 @@ function checkCollision() {
 	}
 }
 
-for (let i; i < snake.length; i++) {
+for (let i = 1; i < snake.length; i++) {
 	if (head.x === snake[i].x && head.y === snake[i].y) {
 		resetGame();
 	}
